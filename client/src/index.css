@@ -1,13 +1,380 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Alex+Brush&family=Arizonia&family=Montserrat:wght@200&family=Roboto+Condensed:wght@300&display=swap");
+
+:root {
+  --main-color: teal;
+  --light-color: #f3f3f3;
+  --dark-color: #333;
+  --primary-color: #f0c040;
+  --secondary-color: #ffa31a;
+  --max-width: 1200px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* utilities */
+.custom-container {
+  width: 95%;
+  margin: auto;
+  padding: 1rem;
+}
+
+.button {
+  padding: 0.75rem;
+  max-width: 20rem;
+  border: 0.1rem #c0c0c0 solid;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  color: var(--dark-color);
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.button.primary {
+  display: block;
+  width: 100%;
+  background-color: var(--primary-color);
+}
+
+.button.secondary {
+  background-color: var(--secondary-color);
+}
+
+.button.colored {
+  width: 90%;
+  background: repeating-linear-gradient(
+    45deg,
+    gold 0px,
+    #b95a50 20%,
+    #dfcb0b 80%
+  );
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.list li {
+  padding-top: 0.5rem;
+}
+.list a {
+  color: #000;
+}
+
+.social ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social ul .fa {
+  display: inline-block;
+  font-family: FontAwesome;
+
+  line-height: 1;
+}
+
+.social ul li {
+  padding: 1rem 1.5rem;
+}
+
+.social ul li a {
+  color: #009ccc;
+}
+
+main {
+  min-height: 80vh;
+}
+
+h3 {
+  padding: 1rem 0;
+}
+
+header {
+  margin-bottom: 0.75rem;
+}
+.navbar {
+  font-weight: bold;
+  background: repeating-linear-gradient(
+    45deg,
+    gold 0px,
+    #b95a50 20%,
+    #dfcb0b 20%,
+    #dfcb0b 80%
+  );
+}
+h1 {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+
+h2 {
+  font-size: 1.4rem;
+  padding: 0.5rem 0;
+}
+
+.rating span {
+  margin: 0.1rem;
+}
+
+/* Showcase */
+.showcase {
+  display: grid;
+  width: 100%;
+  grid-gap: 0.2rem;
+  grid-template-columns: 50% 25% 25%;
+  grid-template-rows: 20rem 20rem;
+  grid-template-areas:
+    "head categ-container categ-container"
+    "head categ-container categ-container";
+}
+
+.head {
+  grid-area: head;
+  position: relative;
+  background: url("images/dress10.jpg") no-repeat top center/cover;
+}
+
+.head img {
+  max-height: 40.5rem;
+}
+
+img {
+  width: 100%;
+}
+.dark-overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.inner-text {
+  font-family: "Arizonia", cursive;
+  font-size: 4rem;
+  color: #fff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  width: 80%;
+  margin: 60% auto;
+  text-align: center;
+}
+
+.categ-container {
+  grid-area: categ-container;
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.showcase .categ-container img {
+  max-height: 20rem;
+}
+.showcase .categ-container img::before {
+  content: "";
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.categ-1,
+.categ-2,
+.categ-3,
+.categ-4 {
+  position: relative;
+}
+.categ-1::before,
+.categ-2::before,
+.categ-3::before,
+.categ-4::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+}
+.categ-1 {
+  background: url("images/dress1.jpg") no-repeat top center/cover;
+}
+.categ-2 {
+  background: url("images/dress3.jpg") no-repeat top center/cover;
+}
+.categ-3 {
+  background: url("images/dress5.jpg") no-repeat top center/cover;
+}
+.categ-4 {
+  background: url("images/dress7.jpg") no-repeat top center/cover;
+}
+.inner-text-small {
+  font-family: "Arizonia", cursive;
+  font-size: 3rem;
+  color: #fff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 80%;
+  padding-bottom: 2rem;
+  margin: auto;
+  text-align: center;
+}
+
+/* forms */
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 32rem;
+  padding: 1.2rem;
+  border: 0.1rem #c0c0c0 solid;
+  border-radius: 0.5rem;
+  list-style-type: none;
+}
+.form-container li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+.form-container h2 {
+  margin: 0;
+  padding: 0;
+}
+input {
+  padding: 1rem;
+  border: 0.1rem #c0c0c0 solid;
+  border-radius: 0.5rem;
+}
+
+/* Offer */
+.offer {
+  display: grid;
+  background-color: var(--light-color) !important;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 1rem;
+}
+.offer-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  align-items: center;
+
+  padding: 3rem 2rem;
+}
+.offer-text h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+.offer img {
+  max-height: 20rem;
+}
+
+/* .card-img-top {
+  height: 80%;
+  object-fit: cover;
+} */
+
+/* .grid-show {
+  display: grid;
+  max-height: 40rem;
+} */
+
+/* footer */
+.footer .footer-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  margin: 0.5rem auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.5rem;
+  background: var(--light-color);
+  color: var(--dark-color);
+}
+
+.footer-container h2 {
+  font-family: "Arizonia", cursive;
+  font-size: 3rem;
+}
+
+.footer-container > *:last-child {
+  background: #444;
+  color: #fff;
+  grid-column: 1 / span 4;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+}
+.footer-container div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: justify;
+  align-items: center;
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+  margin: 2rem auto;
+  grid-gap: 1rem;
+}
+
+.contact .info {
+  display: grid;
+  grid-template-rows: 40% 40%;
+  line-height: 1.5rem;
+}
+
+.contact .info-form form {
+  height: 100%;
+  margin-top: 1.8rem;
+}
+
+#fname,
+#email,
+#country,
+textarea {
+  width: 100%; /* Full width */
+  padding: 0.5rem; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+
+  margin-bottom: 0.6rem; /* Bottom margin */
+  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+/* Style the submit button with a specific background color etc */
+.contact input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+.contact input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+@media only screen and (max-width: 800px) {
+  .showcase {
+    display: none;
+  }
 }
