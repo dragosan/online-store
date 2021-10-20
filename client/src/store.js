@@ -27,7 +27,6 @@ const initState = {
     cartItems: cartItemsFromStorage,
     shippingAddress: shippingAddressFromStorage,
   },
-  payment: paymentMethodFromStorage,
 }
 
 const store = createStore(
