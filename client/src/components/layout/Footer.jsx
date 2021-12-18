@@ -5,11 +5,11 @@ const Footer = () => {
   return (
     <footer id="main-footer" className="footer">
       <div className="footer-container">
-        <div>
+        <div className="fashion">
           <h2>Fashion</h2>
           <p>All you wanna buy in one place.</p>
         </div>
-        <div>
+        <div className="links">
           <h3>Follow us on Social Media</h3>
           <div className="social">
             <ul>
@@ -36,24 +36,8 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        {/* <div>
-          <h3>Site Links</h3>
-          <ul className="list">
-            <li>
-              <a href="!#">Help & Support</a>
-            </li>
-            <li>
-              <a href="!#">Privacy Policy</a>
-            </li>
-            <li>
-              <a href="!#">About Us</a>
-            </li>
-            <li>
-              <a href="!#">Contact</a>
-            </li>
-          </ul>
-        </div> */}
-        <div>
+
+        <div className="club">
           <h2>Join Our Club</h2>
           <p>We have a lot of great products and offer , come and join us!</p>
         </div>

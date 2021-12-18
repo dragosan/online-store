@@ -50,6 +50,6 @@ export const savePaymentMethod =
     })
     localStorage.setItem(
       "paymentMethod",
-      JSON.stringify(getState().paymentMethod.payment)
+      JSON.stringify(getState().paymentMethod)
     )
   }

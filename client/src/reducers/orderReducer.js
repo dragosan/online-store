@@ -94,7 +94,7 @@ export const getOrdersReducer = (state = { orders: [] }, { type, payload }) => {
 export const payOrderReducer = (state = {}, { type, payload }) => {
   switch (type) {
     case PAY_ORDER_REQUEST:
-      return { loading: true }
+      return { loading: true, success: false }
     case PAY_ORDER_SUCCESS:
       return { loading: false, success: true }
     case PAY_ORDER_FAIL:

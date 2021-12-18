@@ -21,7 +21,11 @@ const SearchBox = ({ history }) => {
         className="mr-sm-2 ml-sm-5"
         onChange={(e) => setKeyword(e.target.value)}
       ></FormControl>
-      <Button type="submit" variant="outline-success" className="p-2">
+      <Button
+        type="submit"
+        variant="outline-success"
+        className="btn-sm p-1 m-1"
+      >
         Search
       </Button>
     </Form>

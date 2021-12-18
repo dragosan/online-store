@@ -21,7 +21,6 @@ const Profile = ({ history }) => {
 
   const {
     loading: loadingOrders,
-    success: successOrders,
     orders,
     error: errorOrders,
   } = useSelector((state) => state.myOrders)

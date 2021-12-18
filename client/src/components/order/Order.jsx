@@ -13,7 +13,7 @@ import {
   payOrderCash,
 } from "../../actions/orderActions"
 import { DELIVER_ORDER_RESET, PAY_ORDER_RESET } from "../../actions/types"
-import { LinkContainer } from "react-router-bootstrap"
+
 import { savePaymentMethod } from "../../actions/cartActions"
 
 const Order = ({ match, history }) => {
@@ -21,6 +21,7 @@ const Order = ({ match, history }) => {
   const dispatch = useDispatch()
 
   const [sdkReady, setSdkReady] = useState(false)
+  const [errorPaypal, setErrorPaypal] = useState(true)
 
   const auth = useSelector((state) => state.auth)
   const { userInfo } = auth
@@ -57,7 +58,7 @@ const Order = ({ match, history }) => {
       console.log(clientId)
       const script = document.createElement("script")
       script.type = "text/javascript"
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&buyer-country=EG&currency=EG&components=buttons`
+      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}&components=buttons`
       script.async = true
       script.onload = () => {
         setSdkReady(true)
@@ -76,10 +77,11 @@ const Order = ({ match, history }) => {
         setSdkReady(true)
       }
     }
-  }, [dispatch, orderId, successPay, successDeliver, _order])
+  }, [dispatch, successPay, successDeliver, _order, orderId])
 
   const successPaymentHandler = (paymentResult) => {
-    if (!paymentResult) {
+    console.log(paymentResult)
+    if (paymentResult.length === undefined) {
       dispatch(payOrderCash(orderId))
     } else {
       dispatch(payOrder(orderId, paymentResult))
@@ -152,25 +154,25 @@ const Order = ({ match, history }) => {
                 <>
                   <Message variant="danger">Not Paid</Message>
 
-                  {!_order.isPaid && _order.paymentMethod !== "cash" && (
+                  {/* {!_order.isPaid && _order.paymentMethod !== "cash" && (
                     <Button
                       variant="light"
                       className="btn-sm"
-                      onClick={dispatch(savePaymentMethod("cash"))}
+                      onClick={() => dispatch(savePaymentMethod("cash"))}
                     >
                       Change to Cash
                     </Button>
-                  )}
+                  )} */}
 
-                  {!_order.isPaid && _order.paymentMethod !== "paypal" && (
+                  {/* {!_order.isPaid && _order.paymentMethod !== "paypal" && (
                     <Button
                       variant="light"
                       className="btn-sm"
-                      onClick={dispatch(savePaymentMethod("paypal"))}
+                      onClick={() => dispatch(savePaymentMethod("paypal"))}
                     >
                       Change to Paypal
                     </Button>
-                  )}
+                  )} */}
                 </>
               )}
             </ListGroup.Item>
@@ -239,39 +241,52 @@ const Order = ({ match, history }) => {
                   <Col>${_order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
-              {userInfo && userInfo.isAdmin ? (
-                ""
-              ) : _order.paymentMethod === "cash" ? (
-                <Button disabled>Pay On Receive</Button>
-              ) : (
-                !_order.isPaid && (
-                  <ListGroup.Item>
-                    {loadingPay && <Loader />}
-
-                    {!sdkReady ? (
-                      <Loader />
-                    ) : (
-                      <PayPalButton
-                        amount={_order.totalPrice}
-                        currency="USD"
-                        onSuccess={successPaymentHandler}
-                        onError={() => console.log(error)}
-                      />
-                    )}
-                  </ListGroup.Item>
-                )
+              {errorPaypal && !_order.isPaid && (
+                <ListGroup.Item>
+                  <Row>
+                    <Col>sorry ,Only Cash available at the moment</Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <Button style={{ width: "100%" }} disabled>
+                        Pay On Receive
+                      </Button>
+                    </Col>
+                  </Row>
+                </ListGroup.Item>
               )}
+
+              {userInfo && userInfo.isAdmin
+                ? ""
+                : _order.paymentMethod === "cash" || errorPaypal
+                ? ""
+                : !_order.isPaid && (
+                    <ListGroup.Item>
+                      {loadingPay && <Loader />}
+
+                      {!sdkReady ? (
+                        <Loader />
+                      ) : (
+                        <PayPalButton
+                          amount={_order.totalPrice}
+                          currency="USD"
+                          onSuccess={() => successPaymentHandler()}
+                          onError={() => console.log(error)}
+                        />
+                      )}
+                    </ListGroup.Item>
+                  )}
 
               {loadingDeliver && <Loader />}
               {userInfo &&
                 userInfo.isAdmin &&
                 !_order.isPaid &&
-                _order.paymentMethod === "cash" && (
+                (_order.paymentMethod === "cash" || errorPaypal) && (
                   <ListGroup.Item>
                     <Button
                       type="button"
                       className="btn btn-block"
-                      onClick={successPaymentHandler({})}
+                      onClick={() => successPaymentHandler({})}
                     >
                       Mark As Paid
                     </Button>

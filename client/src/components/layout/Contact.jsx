@@ -36,7 +36,7 @@ const Contact = () => {
           <h3>
             <i className="fas fa-map-marker-alt"></i> Address
           </h3>
-          <h>Maadi Cairo Egypt</h>
+          <h3>Maadi Cairo Egypt</h3>
           <h3>
             <i className="fas fa-phone"></i> Phone
           </h3>
@@ -44,7 +44,9 @@ const Contact = () => {
           <h3>
             <i className="fas fa-phone-volume"></i> Support
           </h3>
-          <a href={`mailto:${email}`}>{email}</a>
+          <a className="email" href={`mailto:${email}`}>
+            {email}
+          </a>
         </div>
         <div className="info-form">
           <form ref={form} onSubmit={onSubmit}>

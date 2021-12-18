@@ -1,21 +1,18 @@
 import React, { useEffect } from "react"
-import { Link } from "react-router-dom"
-import { Card, Carousel, Image } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import Loader from "../layout/Loader"
 import Message from "../layout/Message"
 import { getTopProducts } from "../../actions/productActions"
-import Rating from "./Rating"
 
-const ProductCarousel = () => {
+const ProductSlide = () => {
   const { loading, error, products } = useSelector(
     (state) => state.productTopGet
   )
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(getTopProducts())
-  }, [])
+  // useEffect(() => {
+  //   dispatch(getTopProducts())
+  // }, [dispatch])
 
   return loading ? (
     <Loader />
@@ -30,4 +27,4 @@ const ProductCarousel = () => {
   )
 }
 
-export default ProductCarousel
+export default ProductSlide

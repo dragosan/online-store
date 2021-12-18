@@ -36,7 +36,6 @@ const PaymentMethod = ({ history }) => {
               id="Cash"
               name="paymentMethod"
               value="cash"
-              checked
               onChange={(e) => setPay(e.target.value)}
             ></Form.Check>
             <Form.Check
@@ -45,7 +44,6 @@ const PaymentMethod = ({ history }) => {
               id="PayPal"
               name="paymentMethod"
               value="PayPal"
-              checked
               onChange={(e) => setPay(e.target.value)}
             ></Form.Check>
             {/* <Form.Check

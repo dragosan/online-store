@@ -25,6 +25,7 @@
   color: var(--dark-color);
   border-radius: 5px;
   font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 .button.primary {
@@ -304,6 +305,14 @@ input {
   color: var(--dark-color);
 }
 
+.footer-container div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: justify;
+  align-items: center;
+}
+
 .footer-container h2 {
   font-family: "Arizonia", cursive;
   font-size: 3rem;
@@ -317,20 +326,21 @@ input {
   text-align: center;
   font-size: 0.75rem;
 }
-.footer-container div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: justify;
-  align-items: center;
+
+.social-sm {
+  display: none !important;
 }
 
 .contact {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 100vh;
+  height: 105vh;
   margin: 2rem auto;
   grid-gap: 1rem;
+}
+
+.contact h3 {
+  margin: 0.1rem;
 }
 
 .contact .info {
@@ -341,7 +351,7 @@ input {
 
 .contact .info-form form {
   height: 100%;
-  margin-top: 1.8rem;
+  margin-top: 3rem;
 }
 
 #fname,
@@ -376,5 +386,40 @@ textarea {
 @media only screen and (max-width: 800px) {
   .showcase {
     display: none;
+  }
+
+  .btn-submit {
+    display: inline-block;
+    padding: 0.5rem;
+    margin: 0.5rem;
+  }
+
+  .fashion {
+    display: none !important;
+  }
+  .club {
+    display: none !important;
+  }
+
+  .offer {
+    grid-template-columns: 1fr;
+  }
+
+  .contact {
+    grid-template-columns: 1fr;
+    height: 250vh;
+    margin: 2rem auto;
+    grid-gap: 1rem;
+  }
+
+  .contact .info {
+    display: grid;
+    grid-template-rows: 40% 40%;
+    line-height: 1.5rem;
+  }
+
+  .contact .info-form form {
+    height: 100%;
+    margin-top: 1.8rem;
   }
 }

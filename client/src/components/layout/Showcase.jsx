@@ -1,10 +1,4 @@
 import React, { useEffect } from "react"
-import { Link } from "react-router-dom"
-import { Carousel, Image } from "react-bootstrap"
-import { useDispatch, useSelector } from "react-redux"
-import Loader from "../layout/Loader"
-import Message from "../layout/Message"
-import { getTopProducts } from "../../actions/productActions"
 
 const Showcase = () => {
   // const { loading, error, products } = useSelector(

@@ -208,8 +208,8 @@ export const payOrderCash = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-    const { data } = await axios.put(`/api/orders/${id}/pay/cash`, config)
-
+    const { data } = await axios.put(`/api/orders/${id}/pay/cash`, {}, config)
+    console.log(data)
     dispatch({
       type: PAY_ORDER_SUCCESS,
       payload: data,
